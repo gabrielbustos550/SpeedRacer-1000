@@ -1,28 +1,29 @@
 # SpeedRacer-1000
 
 ## Overview:
-After spending some time learning about canvas I wanted to create a game using what I had just learned.  
+After spending some time learning about canvas I wanted to create a game using what I had just learned. The game will be focused on having a fun experience and quick gameplay. I picked this game because I want to build a game with Canvas that will challange me but is attainable to create. 
 
 Game Rules:
-1. 
-1. 
+1. Navigate vechile using left and right arrow key
+1. Avoid obstacles 
+1. Finish in time or be eliminated 
 
-## WireFrames:
 
-## Start Screen
+
+### Start Screen
 ![screenshot start](images/Screen1.JPG)
 
-## Select Car
+### Select Car
 ![screenshot Select Car](images/Screen2.JPG)
 
-## Game Play
+### Game Play
 ![screenshot Game Play](images/IMG_0192.JPG)
 
 
 
 
 ## User Stories:
-Control the race car using the left and right arrow. The left arrow will move the race car left and the right arrow will move it to the right. Use the arrow buttons to avoid any obstacles on the race track. If you fail to avoid any obstacles on the track the car will be slowed down significantly as you pass through the obstacles. 
+Control the race car using the left and right arrow. The left arrow will move the race car left and the right arrow will move it to the right. Use the arrow buttons to avoid any obstacles on the race track. If you fail to avoid any obstacles on the track the car will be slowed down significantly as you pass through the obstacles. If you do not finish the race in time you will be eliminated. 
 
 
 
