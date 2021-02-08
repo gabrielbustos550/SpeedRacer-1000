@@ -11,13 +11,13 @@ Game Rules:
 
 
 ### Start Screen
-![screenshot start](images/Screen1.JPG)
+![screenshot start](Images/Screen1.JPG)
 
 ### Select Car
-![screenshot Select Car](images/Screen2.JPG)
+![screenshot Select Car](Images/Screen2.JPG)
 
 ### Game Play
-![screenshot Game Play](images/IMG_0192.JPG)
+![screenshot Game Play](Images/IMG_0192.JPG)
 
 
 
