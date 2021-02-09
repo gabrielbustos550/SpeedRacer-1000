@@ -1,5 +1,11 @@
+let totalDistance = 0
+
+let distanceDisplay = document.querySelector('#distance');
+
+
+
+
 const canvas = document.querySelector('#canvas')
-console.log(canvas)
 
 const ctx = canvas.getContext('2d')
 
@@ -7,7 +13,7 @@ const ctx = canvas.getContext('2d')
 canvas.setAttribute('height', getComputedStyle(canvas)['height'])
 canvas.setAttribute('width', getComputedStyle(canvas)['width'])
 
-let gameLoopInterval = setInterval(gameLoop, 100)
+let gameLoopInterval = setInterval(gameLoop, 10)
 
 
 
@@ -33,27 +39,35 @@ let raceCar1 = new RaceCar(550, 360, 'red', 50, 100)
 
 
 let bg = new Image();
-bg.src = 'Images/Background.jpg';
+bg.src = 'Images/Background.PNG';
 
-function Background(){
-    this.x = 0, this.y = 0, this.w = bg.width, this.h = bg.height;
+function Background(y){
+    this.x = 0, this.y = y, this.w = bg.width, this.h = bg.height;
     this.render = function (){
-        ctx.drawImage(bg, this.y ++, 0);
-        if(this.y <= -1499){
-            this.y = 0
+        ctx.drawImage(bg, 0, this.y +=2);
+        if(this.y >= 0){
+            this.y = -4320
+    
+        
         }
+        totalDistance ++
+    
     }
+
 }
 
-let background = new Background ();
+let background = new Background (-4320);
+
+
+
 
 function movementHandler(e){
     switch (e.key){
         case('ArrowRight'):
-            raceCar1.x = raceCar1.x + 15 
+            raceCar1.x = raceCar1.x + 25 
             break
         case('ArrowLeft'):
-            raceCar1.x = raceCar1.x - 15     
+            raceCar1.x = raceCar1.x - 25     
             break
         case('ArrowUp'):
             raceCar1.y = raceCar1.y - 10
@@ -61,10 +75,11 @@ function movementHandler(e){
         case('ArrowDown'):
             raceCar1.y = raceCar1.y + 10
             break
-    }
-    
+    } 
 
 }
+
+
 // ArrowRight/ArrowLeft
 
 function gameLoop(){
@@ -72,10 +87,20 @@ function gameLoop(){
     background.render();
     
     raceCar1.render();
+    distanceDisplay.innerText = 'Pixels traveled: ' + totalDistance
 
 }
 
+
+
 document.addEventListener('keydown', movementHandler)
+    
+
+
+
+
+
+
 
 
 

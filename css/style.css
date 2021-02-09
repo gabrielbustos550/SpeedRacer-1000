@@ -16,11 +16,12 @@ body {
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 20% 20% 20% 20% 20%;
+    text-align: center;
 
 
 }
 #title {
-    background-color: blue;
+    background-color: rgb(206, 206, 223);
     grid-column:  1 / 2;
     grid-row: 0 / 1;
 
