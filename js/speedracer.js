@@ -26,7 +26,7 @@ let distanceInterval = setInterval(updateDistace, 1000)
 
 
 class RaceCar{
-    constructor(x, y, color, height, width){
+    constructor(x, y, color, width, height){
         this.x = x
         this.y = y
         this.color = color
@@ -36,16 +36,16 @@ class RaceCar{
     }
     render(){
         ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.height, this.width)
+        ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
 
-
-
 let raceCar1 = new RaceCar(550, 360, 'red', 50, 100)
 
+/////////
+
 class Obstacle{
-    constructor(x, y, color, height, width){
+    constructor(x, y, color, width, height){
         this.x = x
         this.y = y
         this.color = color
@@ -54,16 +54,16 @@ class Obstacle{
     }
     render(){
         ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.height, this.width)
+        ctx.fillRect(this.x, this.y, this.width, this.height)
         this.y ++
         if(this.y >= 600)
         this.y = -100
     }
 }
 
-let dirt = new Obstacle(300, -100, 'brown', 200, 60)
+let dirt = new Obstacle(300, 100, 'brown', 200, 60)
 
-
+///////////////
 
 let bg = new Image();
 bg.src = 'Images/Background.PNG';
@@ -83,7 +83,7 @@ function Background(y){
 }
 
 let background = new Background (-4320);
-
+///////////
 
 
 
@@ -105,7 +105,7 @@ function movementHandler(e){
 
 }
 
-
+/////////
 
 function updateTimer(){
     timer ++;
@@ -121,10 +121,28 @@ function updateDistace(){
 }
 
 
+function detectCollision(){
+    let dirtLeft = raceCar1.x + raceCar1.width > dirt.x
+    console.log(dirtLeft)
+    let cheat = document.querySelector('#cheat')
+    cheat.innerText = `${raceCar1.x} ${raceCar1.width} ${dirt.x}`
+    
+
+
+
+
+
+
+}
+
+
+
+
 
 
 function gameLoop(){
     ctx.clearRect(0, 0, canvas.width, canvas.height)
+    detectCollision()
     background.render();
     raceCar1.render();
     dirt.render();
