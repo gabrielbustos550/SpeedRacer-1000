@@ -6,7 +6,8 @@ let timerDisplay = document.querySelector('#timer')
 
 let backgroundSpeed = 4
 let kilometersPerSecond = .105 
-
+let lateralSpeed = 25
+let horizontalSpeed = 10
 
 const canvas = document.querySelector('#canvas')
 
@@ -19,6 +20,7 @@ canvas.setAttribute('width', getComputedStyle(canvas)['width'])
 let gameLoopInterval = setInterval(gameLoop, 10)
 let timerInterval = setInterval(updateTimer, 1000)
 let distanceInterval = setInterval(updateDistace, 1000)
+
 
 
 
@@ -41,6 +43,25 @@ class RaceCar{
 
 
 let raceCar1 = new RaceCar(550, 360, 'red', 50, 100)
+
+class Obstacle{
+    constructor(x, y, color, height, width){
+        this.x = x
+        this.y = y
+        this.color = color
+        this.height = height 
+        this.width = width
+    }
+    render(){
+        ctx.fillStyle = this.color
+        ctx.fillRect(this.x, this.y, this.height, this.width)
+        this.y ++
+        if(this.y >= 600)
+        this.y = -100
+    }
+}
+
+let dirt = new Obstacle(300, -100, 'brown', 200, 60)
 
 
 
@@ -69,16 +90,16 @@ let background = new Background (-4320);
 function movementHandler(e){
     switch (e.key){
         case('ArrowRight'):
-            raceCar1.x = raceCar1.x + 25 
+            raceCar1.x = raceCar1.x + lateralSpeed 
             break
         case('ArrowLeft'):
-            raceCar1.x = raceCar1.x - 25     
+            raceCar1.x = raceCar1.x - lateralSpeed     
             break
         case('ArrowUp'):
-            raceCar1.y = raceCar1.y - 10
+            raceCar1.y = raceCar1.y - horizontalSpeed
             break
         case('ArrowDown'):
-            raceCar1.y = raceCar1.y + 10
+            raceCar1.y = raceCar1.y + horizontalSpeed
             break
     } 
 
@@ -106,6 +127,7 @@ function gameLoop(){
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     background.render();
     raceCar1.render();
+    dirt.render();
 
     
 
