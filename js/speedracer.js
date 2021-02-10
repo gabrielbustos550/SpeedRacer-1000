@@ -1,8 +1,11 @@
 let totalDistance = 0
+let timer = 0.00
 
 let distanceDisplay = document.querySelector('#distance');
+let timerDisplay = document.querySelector('#timer')
 
-
+let backgroundSpeed = 4
+let kilometersPerSecond = .105 
 
 
 const canvas = document.querySelector('#canvas')
@@ -14,6 +17,9 @@ canvas.setAttribute('height', getComputedStyle(canvas)['height'])
 canvas.setAttribute('width', getComputedStyle(canvas)['width'])
 
 let gameLoopInterval = setInterval(gameLoop, 10)
+let timerInterval = setInterval(updateTimer, 1000)
+let distanceInterval = setInterval(updateDistace, 1000)
+
 
 
 
@@ -44,14 +50,13 @@ bg.src = 'Images/Background.PNG';
 function Background(y){
     this.x = 0, this.y = y, this.w = bg.width, this.h = bg.height;
     this.render = function (){
-        ctx.drawImage(bg, 0, this.y +=2);
+        ctx.drawImage(bg, 0, this.y += backgroundSpeed);
         if(this.y >= 0){
             this.y = -4320
     
         
         }
-        totalDistance ++
-    
+
     }
 
 }
@@ -80,14 +85,30 @@ function movementHandler(e){
 }
 
 
-// ArrowRight/ArrowLeft
+
+function updateTimer(){
+    timer ++;
+    timerDisplay.innerText = "0:00:" + timer;
+
+}
+
+updateTimer();
+
+function updateDistace(){
+    totalDistance += kilometersPerSecond;
+    distanceDisplay.innerText = 'Kilometers Traveled: ' + totalDistance;
+}
+
+
+
 
 function gameLoop(){
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     background.render();
-    
     raceCar1.render();
-    distanceDisplay.innerText = 'Pixels traveled: ' + totalDistance
+
+    
+
 
 }
 
@@ -114,22 +135,4 @@ document.addEventListener('keydown', movementHandler)
 //480*1152
 
 
-// let gameLoopInterval = setInterval(gameLoop, 60)
-
-
-
-
-
-
-
-
-
-
-
-// function gameLoop(){
-//     ctx.clearRect(0,0, canvas.width, canvas.height)
-
-
-
-// }
 
