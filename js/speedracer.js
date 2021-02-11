@@ -30,8 +30,8 @@ class RaceCar{
         this.x = x
         this.y = y
         this.color = color
-        this.height = height
         this.width = width
+        this.height = height
 
     }
     render(){
@@ -49,8 +49,8 @@ class Obstacle{
         this.x = x
         this.y = y
         this.color = color
-        this.height = height 
-        this.width = width
+        this.width = width  
+        this.height = height
     }
     render(){
         ctx.fillStyle = this.color
@@ -122,23 +122,37 @@ function updateDistace(){
 
 
 function detectCollision(){
-    let dirtLeft = raceCar1.x + raceCar1.width > dirt.x
-    console.log(dirtLeft)
+    // if(raceCar1.x < 225 || raceCar1.x > 875){
+    //     backgroundSpeed = .5
+    // }else {
+    //     backgroundSpeed = 4
+    // }
+
+    
     let cheat = document.querySelector('#cheat')
     cheat.innerText = `${raceCar1.x} ${raceCar1.width} ${dirt.x}`
+
+    let dirtLeft = raceCar1.x + raceCar1.width > dirt.x
+
+    let dirtRight = raceCar1.x < dirt.x + dirt.width
     
+    let dirtTop = raceCar1.y + raceCar1.height > dirt.y
+
+    let dirtBottom = raceCar1.y < dirt.y + dirt.height
+
+    if(dirtLeft && dirtRight && dirtTop && dirtBottom){
+        backgroundSpeed = 1
+        setTimeout(function(){ backgroundSpeed = 4}, 100000)
+    }
 
 
+
+//function endgame(){ once 10k are met}
 
 
 
 
 }
-
-
-
-
-
 
 function gameLoop(){
     ctx.clearRect(0, 0, canvas.width, canvas.height)
