@@ -122,12 +122,6 @@ function updateDistace(){
 
 
 function detectCollision(){
-    // if(raceCar1.x < 225 || raceCar1.x > 875){
-    //     backgroundSpeed = .5
-    // }else {
-    //     backgroundSpeed = 4
-    // }
-
     
     let cheat = document.querySelector('#cheat')
     cheat.innerText = `${raceCar1.x} ${raceCar1.width} ${dirt.x}`
@@ -142,7 +136,11 @@ function detectCollision(){
 
     if(dirtLeft && dirtRight && dirtTop && dirtBottom){
         backgroundSpeed = 1
-        setTimeout(function(){ backgroundSpeed = 4}, 100000)
+        setTimeout(function(){ backgroundSpeed = 4}, 5000)
+    } 
+    else if(raceCar1.x < 225 || raceCar1.x > 875){
+        backgroundSpeed =.5
+        setTimeout(function(){backgroundSpeed = 4 }, 100 )
     }
 
 
