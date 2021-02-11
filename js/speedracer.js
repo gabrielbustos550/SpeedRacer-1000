@@ -3,11 +3,15 @@ let timer = 0.00
 
 let distanceDisplay = document.querySelector('#distance');
 let timerDisplay = document.querySelector('#timer')
+let speedDisplay = document.querySelector('#spedometer')
 
-let backgroundSpeed = 4
+let backgroundSpeed = 2.5
 let kilometersPerSecond = .105 
 let lateralSpeed = 25
-let horizontalSpeed = 10
+let horizontalSpeed = 20
+let obstacleSpeed = 2.5
+
+speedDisplay.innerText = '380 KM/H'
 
 const canvas = document.querySelector('#canvas')
 
@@ -55,13 +59,19 @@ class Obstacle{
     render(){
         ctx.fillStyle = this.color
         ctx.fillRect(this.x, this.y, this.width, this.height)
-        this.y ++
+        this.y += obstacleSpeed
         if(this.y >= 600)
-        this.y = -100
+        this.y = -700
     }
 }
 
-let dirt = new Obstacle(300, 100, 'brown', 200, 60)
+let dirt = new Obstacle(300, -200, 'brown', 200, 60)
+let cone1 = new Obstacle(600, -350, 'orange', 50, 50)
+let dirt2 = new Obstacle(500, -500, 'brown', 200, 60)
+let cone2 = new Obstacle(250, -300, 'orange', 50, 50)
+let dirt3 = new Obstacle(700, -800, 'brown', 200, 60)
+let cone4 = new Obstacle(400, -650, 'orange', 50, 50)
+
 
 ///////////////
 
@@ -136,21 +146,35 @@ function detectCollision(){
 
     if(dirtLeft && dirtRight && dirtTop && dirtBottom){
         backgroundSpeed = 1
-        setTimeout(function(){ backgroundSpeed = 4}, 5000)
+        setTimeout(function(){backgroundSpeed = 2.5}, 5000)
+        obstacleSpeed = 1
+        setTimeout(function(){obstacleSpeed = 2.5}, 5000)
+        kilometersPerSecond = .042
+        setTimeout(function(){kilometersPerSecond = .105}, 5000)
+        speedDisplay.innerText = '152 KM/H'
+        setTimeout(function(){speedDisplay.innerText = '380 KM/H'}, 5000)
+    
+
+
     } 
     else if(raceCar1.x < 225 || raceCar1.x > 875){
-        backgroundSpeed =.5
-        setTimeout(function(){backgroundSpeed = 4 }, 100 )
+        backgroundSpeed = .5
+        setTimeout(function(){backgroundSpeed = 4}, 100)
+        obstacleSpeed = .5
+        setTimeout(function(){obstacleSpeed = 2.5}, 100)
+        kilometersPerSecond = .021
+        setTimeout(function(){kilometersPerSecond = .105}, 100)
+        speedDisplay.innerText = '76 KM/H'
+        setTimeout(function(){speedDisplay.innerText = '380 KM/H'}, 100)
+
+        
     }
 
-
+}
 
 //function endgame(){ once 10k are met}
 
 
-
-
-}
 
 function gameLoop(){
     ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -158,6 +182,11 @@ function gameLoop(){
     background.render();
     raceCar1.render();
     dirt.render();
+    cone1.render();
+    dirt2.render();
+    cone2.render();
+    dirt3.render();
+    cone4.render();
 
     
 
