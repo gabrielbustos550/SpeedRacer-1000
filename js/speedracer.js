@@ -65,12 +65,24 @@ class Obstacle{
     }
 }
 
-let dirt1 = new Obstacle(225, -650, 'brown', 200, 60)
+let dirt1 = new Obstacle(475, -950, 'brown', 200, 60)
 dirt.push(dirt1)
-let dirt2 = new Obstacle(475, -650, 'brown', 200, 60)
+let dirt2 = new Obstacle(300, -650, 'brown', 200, 60)
 dirt.push(dirt2)
-let dirt3 = new Obstacle(725, -650, 'brown', 200, 60)
+let dirt3 = new Obstacle(625, -650, 'brown', 200, 60)
 dirt.push(dirt3)
+let dirt4 = new Obstacle(225, -1050, 'brown', 200, 60)
+dirt.push(dirt4)
+let dirt5 = new Obstacle(750, -1700, 'brown', 200, 60)
+dirt.push(dirt5)
+let dirt6 = new Obstacle(550, -1700, 'brown', 200, 60)
+dirt.push(dirt6)
+
+
+
+
+
+
 let cone1 = new Obstacle(475, -300, 'orange', 50, 50)
 cone.push(cone1)
 let cone2 = new Obstacle(500, -250, 'orange', 50, 50)
@@ -83,6 +95,38 @@ let cone5 = new Obstacle(450, -350, 'orange', 50, 50)
 cone.push(cone5)
 let cone6 = new Obstacle(625, -350, 'orange', 50, 50)
 cone.push(cone6)
+let cone7 = new Obstacle(225, -450, 'orange', 50, 50)
+cone.push(cone7)
+let cone8 = new Obstacle(875, -450, 'orange', 50, 50)
+cone.push(cone8)
+let cone9 = new Obstacle(300, -300, 'orange', 50, 50)
+cone.push(cone9)
+let cone10 = new Obstacle(800, -300, 'orange', 50, 50)
+cone.push(cone10)
+let cone11 = new Obstacle(875, -800, 'orange', 50, 50)
+cone.push(cone11)
+let cone12 = new Obstacle(675, -975, 'orange', 50, 50)
+cone.push(cone12)
+let cone13 = new Obstacle(725, -1025, 'orange', 50, 50)
+cone.push(cone13)
+let cone14 = new Obstacle(775, -1075, 'orange', 50, 50)
+cone.push(cone14)
+let cone15 = new Obstacle(450, -1275, 'orange', 50, 50)
+cone.push(cone15)
+let cone16 = new Obstacle(525, -1150, 'orange', 50, 50)
+cone.push(cone16)
+let cone17 = new Obstacle(225, -1375, 'orange', 50, 50)
+cone.push(cone17)
+let cone18 = new Obstacle(225, -1425, 'orange', 50, 50)
+cone.push(cone18)
+let cone19 = new Obstacle(275, -1400, 'orange', 50, 50)
+cone.push(cone19)
+let cone20 = new Obstacle(325, -1375, 'orange', 50, 50)
+cone.push(cone20)
+let cone21 = new Obstacle(275, -1350, 'orange', 50, 50)
+cone.push(cone21)
+let cone22 = new Obstacle(225, -1325, 'orange', 50, 50)
+cone.push(cone22)
 
 
 
@@ -96,7 +140,7 @@ function Background(y){
     this.render = function (){
         ctx.drawImage(bg, 0, this.y += backgroundSpeed);
         if(this.y >= 0){
-            this.y = -4320
+            this.y = -4340
     
         
         }
@@ -105,7 +149,7 @@ function Background(y){
 
 }
 
-let background = new Background (-4320);
+let background = new Background (-4340);
 ///////////
 
 
@@ -137,7 +181,7 @@ function updateStatistics(){
     timer += 1;
     timerDisplay.innerText = "0:00:" + timer;
 
-    if(totalDistance >= 7){
+    if(totalDistance >= 7.07){
         lateralSpeed = 0
         horizontalSpeed = 0
         backgroundSpeed = 0
@@ -209,6 +253,16 @@ function gameLoop(){
     }
     for (let i = 0; i < cone.length; i ++){
         cone[i].render();
+        if(obstacleCollision(raceCar1, cone[i]) === true){
+            backgroundSpeed = 1.5
+            setTimeout(function(){backgroundSpeed = 2.5}, 3000)
+            obstacleSpeed = 1.5
+            setTimeout(function(){obstacleSpeed = 2.5}, 3000)
+            kilometersPerSecond = .063
+            setTimeout(function(){kilometersPerSecond = .105}, 3000)
+            speedDisplay.innerText = '228 KM/H'
+            setTimeout(function(){speedDisplay.innerText = '380 KM/H'}, 3000)
+        }
     }
     raceCar1.render();
 
