@@ -27,55 +27,66 @@ let statsInterval = setInterval(updateStatistics, 1000)
 let dirt = []
 let cone = []
 
-
+const carImg = new Image()
+carImg.src = 'Images/raceCar.PNG'
 
 class RaceCar{
-    constructor(x, y, color, width, height){
+    constructor(x, y, color, width, height, img){
         this.x = x
         this.y = y
         this.color = color
         this.width = width
         this.height = height
+        this.img = img
 
     }
     render(){
         ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.width, this.height)
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
     }
 }
 
-let raceCar1 = new RaceCar(550, 360, 'red', 50, 100)
+let raceCar1 = new RaceCar(550, 360, 'red', 50, 100, carImg)
 
 /////////
 
+
+
+const coneImg = new Image()
+coneImg.src = 'Images/cone.PNG'
+const dirtImg = new Image()
+dirtImg.src = 'Images/dirt.PNG'
+
+
 class Obstacle{
-    constructor(x, y, color, width, height){
+    constructor(x, y, color, width, height, img){
         this.x = x
         this.y = y
         this.color = color
         this.width = width  
         this.height = height
+        this.img = img
     }
     render(){
         ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.width, this.height)
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
         this.y += obstacleSpeed
         if(this.y >= 600)
         this.y = -2000
     }
 }
 
-let dirt1 = new Obstacle(475, -950, 'brown', 200, 60)
+let dirt1 = new Obstacle(475, -950, 'brown', 200, 60, dirtImg)
 dirt.push(dirt1)
-let dirt2 = new Obstacle(300, -650, 'brown', 200, 60)
+let dirt2 = new Obstacle(300, -650, 'brown', 200, 60, dirtImg)
 dirt.push(dirt2)
-let dirt3 = new Obstacle(625, -650, 'brown', 200, 60)
+let dirt3 = new Obstacle(625, -650, 'brown', 200, 60, dirtImg)
 dirt.push(dirt3)
-let dirt4 = new Obstacle(225, -1050, 'brown', 200, 60)
+let dirt4 = new Obstacle(225, -1050, 'brown', 200, 60, dirtImg)
 dirt.push(dirt4)
-let dirt5 = new Obstacle(750, -1700, 'brown', 200, 60)
+let dirt5 = new Obstacle(750, -1700, 'brown', 200, 60, dirtImg)
 dirt.push(dirt5)
-let dirt6 = new Obstacle(550, -1700, 'brown', 200, 60)
+let dirt6 = new Obstacle(550, -1700, 'brown', 200, 60, dirtImg)
 dirt.push(dirt6)
 
 
@@ -83,49 +94,49 @@ dirt.push(dirt6)
 
 
 
-let cone1 = new Obstacle(475, -300, 'orange', 50, 50)
+let cone1 = new Obstacle(475, -300, 'orange', 50, 50, coneImg)
 cone.push(cone1)
-let cone2 = new Obstacle(500, -250, 'orange', 50, 50)
+let cone2 = new Obstacle(500, -250, 'orange', 50, 50, coneImg)
 cone.push(cone2)
-let cone3 = new Obstacle(575, -250, 'orange', 50, 50)
+let cone3 = new Obstacle(575, -250, 'orange', 50, 50, coneImg)
 cone.push(cone3)
-let cone4 = new Obstacle(600, -300, 'orange', 50, 50)
+let cone4 = new Obstacle(600, -300, 'orange', 50, 50, coneImg)
 cone.push(cone4)
-let cone5 = new Obstacle(450, -350, 'orange', 50, 50)
+let cone5 = new Obstacle(450, -350, 'orange', 50, 50, coneImg)
 cone.push(cone5)
-let cone6 = new Obstacle(625, -350, 'orange', 50, 50)
+let cone6 = new Obstacle(625, -350, 'orange', 50, 50, coneImg)
 cone.push(cone6)
-let cone7 = new Obstacle(225, -450, 'orange', 50, 50)
+let cone7 = new Obstacle(225, -450, 'orange', 50, 50, coneImg)
 cone.push(cone7)
-let cone8 = new Obstacle(875, -450, 'orange', 50, 50)
+let cone8 = new Obstacle(875, -450, 'orange', 50, 50, coneImg)
 cone.push(cone8)
-let cone9 = new Obstacle(300, -300, 'orange', 50, 50)
+let cone9 = new Obstacle(300, -300, 'orange', 50, 50, coneImg)
 cone.push(cone9)
-let cone10 = new Obstacle(800, -300, 'orange', 50, 50)
+let cone10 = new Obstacle(800, -300, 'orange', 50, 50, coneImg)
 cone.push(cone10)
-let cone11 = new Obstacle(875, -800, 'orange', 50, 50)
+let cone11 = new Obstacle(875, -800, 'orange', 50, 50, coneImg)
 cone.push(cone11)
-let cone12 = new Obstacle(675, -975, 'orange', 50, 50)
+let cone12 = new Obstacle(675, -975, 'orange', 50, 50, coneImg)
 cone.push(cone12)
-let cone13 = new Obstacle(725, -1025, 'orange', 50, 50)
+let cone13 = new Obstacle(725, -1025, 'orange', 50, 50, coneImg)
 cone.push(cone13)
-let cone14 = new Obstacle(775, -1075, 'orange', 50, 50)
+let cone14 = new Obstacle(775, -1075, 'orange', 50, 50, coneImg)
 cone.push(cone14)
-let cone15 = new Obstacle(450, -1275, 'orange', 50, 50)
+let cone15 = new Obstacle(450, -1275, 'orange', 50, 50, coneImg)
 cone.push(cone15)
-let cone16 = new Obstacle(525, -1150, 'orange', 50, 50)
+let cone16 = new Obstacle(525, -1150, 'orange', 50, 50, coneImg)
 cone.push(cone16)
-let cone17 = new Obstacle(225, -1375, 'orange', 50, 50)
+let cone17 = new Obstacle(225, -1375, 'orange', 50, 50, coneImg)
 cone.push(cone17)
-let cone18 = new Obstacle(225, -1425, 'orange', 50, 50)
+let cone18 = new Obstacle(225, -1425, 'orange', 50, 50, coneImg)
 cone.push(cone18)
-let cone19 = new Obstacle(275, -1400, 'orange', 50, 50)
+let cone19 = new Obstacle(275, -1400, 'orange', 50, 50, coneImg)
 cone.push(cone19)
-let cone20 = new Obstacle(325, -1375, 'orange', 50, 50)
+let cone20 = new Obstacle(325, -1375, 'orange', 50, 50, coneImg)
 cone.push(cone20)
-let cone21 = new Obstacle(275, -1350, 'orange', 50, 50)
+let cone21 = new Obstacle(275, -1350, 'orange', 50, 50, coneImg)
 cone.push(cone21)
-let cone22 = new Obstacle(225, -1325, 'orange', 50, 50)
+let cone22 = new Obstacle(225, -1325, 'orange', 50, 50, coneImg)
 cone.push(cone22)
 
 
