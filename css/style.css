@@ -88,3 +88,25 @@ body {
     background: rgb(110, 146, 214);
 
 }
+
+.modal {
+    z-index: 1;
+    position: fixed;
+    display: inline;
+    background-color: rgba(110,146,214,1);
+    width: 1150px;
+    height: 590px;
+    top: 40px;
+    text-align: center;
+    border-width: 10px;
+    border-style: outset;
+    border-color: #cd5b33;
+}
+.modal-header{
+    font-family: 'Bungee Shade', cursive;
+    font-size: 2.5em;
+    color: white;
+}
+h3 {
+    font-size: 1.7em;
+}

@@ -14,6 +14,9 @@ let obstacleSpeed = 2.5
 let gameLoopInterval = null
 let statsInterval = null
 
+let modal = document.getElementById('initialModal')
+
+
 
 ////////
 
@@ -338,6 +341,7 @@ startBtn.addEventListener('click',() => {
     statsInterval = setInterval(updateStatistics, 1000)  
     gameLoopInterval = setInterval(gameLoop, 10)
     updateStatistics();
+    modal.style.display = 'none';
 });
 
 
