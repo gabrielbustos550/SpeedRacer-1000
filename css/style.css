@@ -1,41 +1,61 @@
 body {
     width: 98vw;
     height: 95vh;
-    border-style: solid;
-    border-color: blue;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    background-image: url("../Images/raceflag.png");
+    background-size: cover;
+    color: white;
 
 }
 #container {
     width: 60%;
     height: 60%;
     border-style: solid;
-    border-color: red;
+    border-color: #cd5b33;
     margin-top: -100px;
     border-width: 10px;
     display: grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 20% 20% 20% 20% 20%;
     text-align: center;
+    background-color: white;
 
 
 }
 #title {
-    background-color: rgb(206, 206, 223);
+    background-color:rgb(110, 141, 199);
     grid-column:  1 / 2;
     grid-row: 0 / 1;
-
-
+    color: white;
+    font-size: 1.7em;
+    border-color: #cd5b33;
+    border-style: solid;
+    font-family: 'Bungee Shade', cursive;
 }
+
+#stats{
+    border-color: #cd5b33;
+    border-style: solid;
+    background-color: rgb(110, 141, 199);
+    font-family: 'Bungee Hairline', cursive;
+    font-weight: bolder;
+}
+
+
 #timer {
     background-color: yellow;
     grid-column:  2 / 3;
     grid-row: 0 / 1;
+    color: red;
+    font-family: 'Bungee Hairline', cursive;
+    font-weight: bolder;
 
 }
+
+
 #canvas-container {
     grid-column:  1 / 6;
     grid-row: 2 / 6;
@@ -44,16 +64,27 @@ body {
     width: 100%;
     height: 100%;
 }
-#cheat {
-    border-style: solid;
-    border-color: black;
-}
+
 #spedometer {
-    border-style: solid;
-    border-color: black;
+
     width: 300px;
     text-align: center;
     height: 100px;
     padding-top: 10px;
     font-size: 2em;
+}
+.button{
+    background: #cd5b33;
+    border-style: solid;
+    border-color: white;
+    padding: .5em .5em;
+    width: 250px;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.4em;
+
+}
+.button:hover{
+    background: rgb(110, 146, 214);
+
 }
