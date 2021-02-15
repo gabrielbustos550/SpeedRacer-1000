@@ -2,7 +2,7 @@ body {
     width: 98vw;
     height: 95vh;
     border-style: solid;
-    border-color: black;
+    border-color: blue;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -13,8 +13,8 @@ body {
     width: 60%;
     height: 60%;
     border-style: solid;
-    border-color: black;
-    margin-top: -200px;
+    border-color: red;
+    margin-top: -100px;
     border-width: 10px;
     display: grid;
     grid-template-columns: 50% 50%;

@@ -11,7 +11,19 @@ let lateralSpeed = 25
 let horizontalSpeed = 20
 let obstacleSpeed = 2.5
 
+let gameLoopInterval = null
+let statsInterval = null
+
+
+
+////////
+
 speedDisplay.innerText = '380 KM/H'
+
+
+
+
+//////////
 
 const canvas = document.querySelector('#canvas')
 
@@ -21,8 +33,8 @@ const ctx = canvas.getContext('2d')
 canvas.setAttribute('height', getComputedStyle(canvas)['height'])
 canvas.setAttribute('width', getComputedStyle(canvas)['width'])
 
-let gameLoopInterval = null
-let statsInterval = setInterval(updateStatistics, 1000)
+
+///////////////
 
 let dirt = []
 let cone = []
@@ -31,22 +43,20 @@ const carImg = new Image()
 carImg.src = 'Images/raceCar.PNG'
 
 class RaceCar{
-    constructor(x, y, color, width, height, img){
+    constructor(x, y, width, height, img){
         this.x = x
         this.y = y
-        this.color = color
         this.width = width
         this.height = height
         this.img = img
-
+        
     }
     render(){
-        ctx.fillStyle = this.color
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
     }
 }
 
-let raceCar1 = new RaceCar(550, 360, 'red', 50, 100, carImg)
+let raceCar1 = new RaceCar(550, 360, 50, 100, carImg)
 
 /////////
 
@@ -88,6 +98,13 @@ let dirt5 = new Obstacle(750, -1700, 'brown', 200, 60, dirtImg)
 dirt.push(dirt5)
 let dirt6 = new Obstacle(550, -1700, 'brown', 200, 60, dirtImg)
 dirt.push(dirt6)
+let dirt7 = new Obstacle(255, -1550, 'brown', 200, 60, dirtImg)
+dirt.push(dirt7)
+let dirt8 = new Obstacle(725, -2100, 'brown', 200, 60, dirtImg)
+dirt.push(dirt8)
+let dirt9 = new Obstacle(200, -2250, 'brown', 200, 60, dirtImg)
+dirt.push(dirt9)
+
 
 
 
@@ -138,10 +155,36 @@ let cone21 = new Obstacle(275, -1350, 'orange', 50, 50, coneImg)
 cone.push(cone21)
 let cone22 = new Obstacle(225, -1325, 'orange', 50, 50, coneImg)
 cone.push(cone22)
+let cone23 = new Obstacle(825, -1525, 'orange', 50, 50, coneImg)
+cone.push(cone23)
+let cone24 = new Obstacle(775, -1525, 'orange', 50, 50, coneImg)
+cone.push(cone24)
+let cone25 = new Obstacle(725, -1525, 'orange', 50, 50, coneImg)
+cone.push(cone25)
+let cone26 = new Obstacle(675, -1525, 'orange', 50, 50, coneImg)
+cone.push(cone26)
+let cone27 = new Obstacle(775, -1425, 'orange', 50, 50, coneImg)
+cone.push(cone27)
+let cone28 = new Obstacle(725, -1425, 'orange', 50, 50, coneImg)
+cone.push(cone28)
+let cone29 = new Obstacle(550, -2050, 'orange', 50, 50, coneImg)
+cone.push(cone29)
+let cone30 = new Obstacle(375, -1950, 'orange', 50, 50, coneImg)
+cone.push(cone30)
+let cone31 = new Obstacle(425, -1950, 'orange', 50, 50, coneImg)
+cone.push(cone31)
+let cone32 = new Obstacle(475, -1950, 'orange', 50, 50, coneImg)
+cone.push(cone32)
+let cone33 = new Obstacle(600, -2100, 'orange', 50, 50, coneImg)
+cone.push(cone33)
+let cone34 = new Obstacle(600, -2150, 'orange', 50, 50, coneImg)
+cone.push(cone34)
+let cone35 = new Obstacle(550, -2200, 'orange', 50, 50, coneImg)
+cone.push(cone35)
 
 
 
-///////////////
+////////////
 
 let bg = new Image();
 bg.src = 'Images/Background.PNG';
@@ -152,12 +195,12 @@ function Background(y){
         ctx.drawImage(bg, 0, this.y += backgroundSpeed);
         if(this.y >= 0){
             this.y = -4340
-    
-        
+            
+            
         }
-
+        
     }
-
+    
 }
 
 let background = new Background (-4340);
@@ -168,19 +211,19 @@ let background = new Background (-4340);
 function movementHandler(e){
     switch (e.key){
         case('ArrowRight'):
-            raceCar1.x = raceCar1.x + lateralSpeed 
-            break
+        raceCar1.x = raceCar1.x + lateralSpeed 
+        break
         case('ArrowLeft'):
-            raceCar1.x = raceCar1.x - lateralSpeed     
-            break
+        raceCar1.x = raceCar1.x - lateralSpeed     
+        break
         case('ArrowUp'):
-            raceCar1.y = raceCar1.y - horizontalSpeed
-            break
+        raceCar1.y = raceCar1.y - horizontalSpeed
+        break
         case('ArrowDown'):
-            raceCar1.y = raceCar1.y + horizontalSpeed
-            break
+        raceCar1.y = raceCar1.y + horizontalSpeed
+        break
     } 
-
+    
 }
 
 /////////
@@ -191,37 +234,28 @@ function updateStatistics(){
     distanceDisplay.innerText = 'Kilometers Traveled: ' + totalDistance;
     timer += 1;
     timerDisplay.innerText = "0:00:" + timer;
-
-    if(totalDistance >= 7.07){
+    if(totalDistance >= 7.14){
         lateralSpeed = 0
         horizontalSpeed = 0
         backgroundSpeed = 0
         kilometersPerSecond = 0 
         obstacleSpeed = 0
         clearInterval(statsInterval)
-
+        
     }
 }
-updateStatistics();
-
 
 
 
 function obstacleCollision(collision1, collision2){
-    
-    let cheat = document.querySelector('#cheat')
-    cheat.innerText = `${raceCar1.x} ${raceCar1.width} ${dirt1.x}`
-    
-
-
     let dirtLeft = collision1.x + collision1.width > collision2.x
-
+    
     let dirtRight = collision1.x < collision2.x + collision2.width
     
     let dirtTop = collision1.y + collision1.height > collision2.y
-
+    
     let dirtBottom = collision1.y < collision2.y + collision2.height
-
+    
     if(dirtLeft && dirtRight && dirtTop && dirtBottom){
         return true
         
@@ -238,7 +272,7 @@ function detectOutOfBounds(){
         setTimeout(function(){kilometersPerSecond = .105}, 100)
         speedDisplay.innerText = '76 KM/H'
         setTimeout(function(){speedDisplay.innerText = '380 KM/H'}, 100)
-    
+        
     }
 }
 
@@ -276,7 +310,7 @@ function gameLoop(){
         }
     }
     raceCar1.render();
-
+    
     
     
 }
@@ -286,7 +320,17 @@ function gameLoop(){
 document.addEventListener('keydown', movementHandler)
 
 
-gameLoopInterval = setInterval(gameLoop, 10)
+let startBtn = document.querySelector('#startBtn');
+
+
+startBtn.addEventListener('click',() => {  
+    statsInterval = setInterval(updateStatistics, 1000)  
+    gameLoopInterval = setInterval(gameLoop, 10)
+    updateStatistics();
+
+
+ 
+});
 
 
 
