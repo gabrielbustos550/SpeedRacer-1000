@@ -15,10 +15,7 @@ let gameLoopInterval = null
 let statsInterval = null
 
 
-
 ////////
-
-speedDisplay.innerText = '380 KM/H'
 
 
 
@@ -69,16 +66,14 @@ dirtImg.src = 'Images/dirt.PNG'
 
 
 class Obstacle{
-    constructor(x, y, color, width, height, img){
+    constructor(x, y, width, height, img){
         this.x = x
         this.y = y
-        this.color = color
         this.width = width  
         this.height = height
         this.img = img
     }
     render(){
-        ctx.fillStyle = this.color
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
         this.y += obstacleSpeed
         if(this.y >= 600)
@@ -86,23 +81,23 @@ class Obstacle{
     }
 }
 
-let dirt1 = new Obstacle(475, -950, 'brown', 200, 60, dirtImg)
+let dirt1 = new Obstacle(475, -950, 200, 60, dirtImg)
 dirt.push(dirt1)
-let dirt2 = new Obstacle(300, -650, 'brown', 200, 60, dirtImg)
+let dirt2 = new Obstacle(300, -650, 200, 60, dirtImg)
 dirt.push(dirt2)
-let dirt3 = new Obstacle(625, -650, 'brown', 200, 60, dirtImg)
+let dirt3 = new Obstacle(625, -650, 200, 60, dirtImg)
 dirt.push(dirt3)
-let dirt4 = new Obstacle(225, -1050, 'brown', 200, 60, dirtImg)
+let dirt4 = new Obstacle(225, -1050, 200, 60, dirtImg)
 dirt.push(dirt4)
-let dirt5 = new Obstacle(750, -1700, 'brown', 200, 60, dirtImg)
+let dirt5 = new Obstacle(750, -1700, 200, 60, dirtImg)
 dirt.push(dirt5)
-let dirt6 = new Obstacle(550, -1700, 'brown', 200, 60, dirtImg)
+let dirt6 = new Obstacle(550, -1700, 200, 60, dirtImg)
 dirt.push(dirt6)
-let dirt7 = new Obstacle(255, -1550, 'brown', 200, 60, dirtImg)
+let dirt7 = new Obstacle(255, -1550, 200, 60, dirtImg)
 dirt.push(dirt7)
-let dirt8 = new Obstacle(725, -2100, 'brown', 200, 60, dirtImg)
+let dirt8 = new Obstacle(725, -2100, 200, 60, dirtImg)
 dirt.push(dirt8)
-let dirt9 = new Obstacle(200, -2250, 'brown', 200, 60, dirtImg)
+let dirt9 = new Obstacle(200, -2250, 200, 60, dirtImg)
 dirt.push(dirt9)
 
 
@@ -111,76 +106,88 @@ dirt.push(dirt9)
 
 
 
-let cone1 = new Obstacle(475, -300, 'orange', 50, 50, coneImg)
+let cone1 = new Obstacle(475, -300, 50, 50, coneImg)
 cone.push(cone1)
-let cone2 = new Obstacle(500, -250, 'orange', 50, 50, coneImg)
+let cone2 = new Obstacle(500, -250, 50, 50, coneImg)
 cone.push(cone2)
-let cone3 = new Obstacle(575, -250, 'orange', 50, 50, coneImg)
+let cone3 = new Obstacle(575, -250, 50, 50, coneImg)
 cone.push(cone3)
-let cone4 = new Obstacle(600, -300, 'orange', 50, 50, coneImg)
+let cone4 = new Obstacle(600, -300, 50, 50, coneImg)
 cone.push(cone4)
-let cone5 = new Obstacle(450, -350, 'orange', 50, 50, coneImg)
+let cone5 = new Obstacle(450, -350, 50, 50, coneImg)
 cone.push(cone5)
-let cone6 = new Obstacle(625, -350, 'orange', 50, 50, coneImg)
+let cone6 = new Obstacle(625, -350, 50, 50, coneImg)
 cone.push(cone6)
-let cone7 = new Obstacle(225, -450, 'orange', 50, 50, coneImg)
+let cone7 = new Obstacle(225, -450, 50, 50, coneImg)
 cone.push(cone7)
-let cone8 = new Obstacle(875, -450, 'orange', 50, 50, coneImg)
+let cone8 = new Obstacle(875, -450, 50, 50, coneImg)
 cone.push(cone8)
-let cone9 = new Obstacle(300, -300, 'orange', 50, 50, coneImg)
+let cone9 = new Obstacle(300, -300, 50, 50, coneImg)
 cone.push(cone9)
-let cone10 = new Obstacle(800, -300, 'orange', 50, 50, coneImg)
+let cone10 = new Obstacle(800, -300, 50, 50, coneImg)
 cone.push(cone10)
-let cone11 = new Obstacle(875, -800, 'orange', 50, 50, coneImg)
+let cone11 = new Obstacle(875, -800, 50, 50, coneImg)
 cone.push(cone11)
-let cone12 = new Obstacle(675, -975, 'orange', 50, 50, coneImg)
+let cone12 = new Obstacle(675, -975, 50, 50, coneImg)
 cone.push(cone12)
-let cone13 = new Obstacle(725, -1025, 'orange', 50, 50, coneImg)
+let cone13 = new Obstacle(725, -1025, 50, 50, coneImg)
 cone.push(cone13)
-let cone14 = new Obstacle(775, -1075, 'orange', 50, 50, coneImg)
+let cone14 = new Obstacle(775, -1075, 50, 50, coneImg)
 cone.push(cone14)
-let cone15 = new Obstacle(450, -1275, 'orange', 50, 50, coneImg)
+let cone15 = new Obstacle(450, -1275, 50, 50, coneImg)
 cone.push(cone15)
-let cone16 = new Obstacle(525, -1150, 'orange', 50, 50, coneImg)
+let cone16 = new Obstacle(525, -1150, 50, 50, coneImg)
 cone.push(cone16)
-let cone17 = new Obstacle(225, -1375, 'orange', 50, 50, coneImg)
+let cone17 = new Obstacle(225, -1375, 50, 50, coneImg)
 cone.push(cone17)
-let cone18 = new Obstacle(225, -1425, 'orange', 50, 50, coneImg)
+let cone18 = new Obstacle(225, -1425, 50, 50, coneImg)
 cone.push(cone18)
-let cone19 = new Obstacle(275, -1400, 'orange', 50, 50, coneImg)
+let cone19 = new Obstacle(275, -1400, 50, 50, coneImg)
 cone.push(cone19)
-let cone20 = new Obstacle(325, -1375, 'orange', 50, 50, coneImg)
+let cone20 = new Obstacle(325, -1375, 50, 50, coneImg)
 cone.push(cone20)
-let cone21 = new Obstacle(275, -1350, 'orange', 50, 50, coneImg)
+let cone21 = new Obstacle(275, -1350, 50, 50, coneImg)
 cone.push(cone21)
-let cone22 = new Obstacle(225, -1325, 'orange', 50, 50, coneImg)
+let cone22 = new Obstacle(225, -1325, 50, 50, coneImg)
 cone.push(cone22)
-let cone23 = new Obstacle(825, -1525, 'orange', 50, 50, coneImg)
+let cone23 = new Obstacle(825, -1525, 50, 50, coneImg)
 cone.push(cone23)
-let cone24 = new Obstacle(775, -1525, 'orange', 50, 50, coneImg)
+let cone24 = new Obstacle(775, -1525, 50, 50, coneImg)
 cone.push(cone24)
-let cone25 = new Obstacle(725, -1525, 'orange', 50, 50, coneImg)
+let cone25 = new Obstacle(725, -1525, 50, 50, coneImg)
 cone.push(cone25)
-let cone26 = new Obstacle(675, -1525, 'orange', 50, 50, coneImg)
+let cone26 = new Obstacle(675, -1525, 50, 50, coneImg)
 cone.push(cone26)
-let cone27 = new Obstacle(775, -1425, 'orange', 50, 50, coneImg)
+let cone27 = new Obstacle(775, -1425, 50, 50, coneImg)
 cone.push(cone27)
-let cone28 = new Obstacle(725, -1425, 'orange', 50, 50, coneImg)
+let cone28 = new Obstacle(725, -1425, 50, 50, coneImg)
 cone.push(cone28)
-let cone29 = new Obstacle(550, -2050, 'orange', 50, 50, coneImg)
+let cone29 = new Obstacle(550, -2050, 50, 50, coneImg)
 cone.push(cone29)
-let cone30 = new Obstacle(375, -1950, 'orange', 50, 50, coneImg)
+let cone30 = new Obstacle(375, -1950, 50, 50, coneImg)
 cone.push(cone30)
-let cone31 = new Obstacle(425, -1950, 'orange', 50, 50, coneImg)
+let cone31 = new Obstacle(425, -1950, 50, 50, coneImg)
 cone.push(cone31)
-let cone32 = new Obstacle(475, -1950, 'orange', 50, 50, coneImg)
+let cone32 = new Obstacle(475, -1950, 50, 50, coneImg)
 cone.push(cone32)
-let cone33 = new Obstacle(600, -2100, 'orange', 50, 50, coneImg)
+let cone33 = new Obstacle(600, -2100, 50, 50, coneImg)
 cone.push(cone33)
-let cone34 = new Obstacle(600, -2150, 'orange', 50, 50, coneImg)
+let cone34 = new Obstacle(600, -2150, 50, 50, coneImg)
 cone.push(cone34)
-let cone35 = new Obstacle(550, -2200, 'orange', 50, 50, coneImg)
+let cone35 = new Obstacle(550, -2200, 50, 50, coneImg)
 cone.push(cone35)
+let cone36 = new Obstacle(300, -2500, 50, 50, coneImg)
+cone.push(cone36)
+let cone37 = new Obstacle(400, -2500, 50, 50, coneImg)
+cone.push(cone37)
+let cone38 = new Obstacle(500, -2500, 50, 50, coneImg)
+cone.push(cone38)
+let cone39 = new Obstacle(600, -2500, 50, 50, coneImg)
+cone.push(cone39)
+let cone40 = new Obstacle(700, -2500, 50, 50, coneImg)
+cone.push(cone40)
+let cone41 = new Obstacle(800, -2500, 50, 50, coneImg)
+cone.push(cone41)
 
 
 
@@ -234,13 +241,16 @@ function updateStatistics(){
     distanceDisplay.innerText = 'Kilometers Traveled: ' + totalDistance;
     timer += 1;
     timerDisplay.innerText = "0:00:" + timer;
-    if(totalDistance >= 7.14){
+    if(totalDistance >= 1.14){
         lateralSpeed = 0
         horizontalSpeed = 0
         backgroundSpeed = 0
         kilometersPerSecond = 0 
         obstacleSpeed = 0
         clearInterval(statsInterval)
+        startBtn.innerText = "Restart Race"
+
+
         
     }
 }
@@ -323,14 +333,16 @@ document.addEventListener('keydown', movementHandler)
 let startBtn = document.querySelector('#startBtn');
 
 
-startBtn.addEventListener('click',() => {  
+startBtn.addEventListener('click',() => { 
+    speedDisplay.innerText = '380 KM/H' 
     statsInterval = setInterval(updateStatistics, 1000)  
     gameLoopInterval = setInterval(gameLoop, 10)
     updateStatistics();
-
-
- 
 });
+
+
+
+
 
 
 
