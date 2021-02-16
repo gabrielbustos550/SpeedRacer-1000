@@ -1,21 +1,24 @@
-let totalDistance = 0
-let timer = 0.00
+let totalDistance = null
+let timer = null
+let gameOver = false
 
 let distanceDisplay = document.querySelector('#distance');
-let timerDisplay = document.querySelector('#timer')
-let speedDisplay = document.querySelector('#spedometer')
+let timerDisplay = document.querySelector('#timer');
+let speedDisplay = document.querySelector('#spedometer');
 
-let backgroundSpeed = 2.5
-let kilometersPerSecond = .105 
-let lateralSpeed = 25
-let horizontalSpeed = 20
-let obstacleSpeed = 2.5
+let backgroundSpeed = null
+let kilometersPerSecond = null 
+let lateralSpeed = null
+let horizontalSpeed = null
+let obstacleSpeed = null
 
 let gameLoopInterval = null
 let statsInterval = null
 
-let modal = document.getElementById('initialModal')
-
+let modal = document.getElementById('initialModal');
+let winningModal = document.querySelector('#winningModal');
+let startBtn = document.querySelector('#startBtn');
+let restartBtn = document.querySelector('#restartBtn');
 
 
 ////////
@@ -239,24 +242,9 @@ function movementHandler(e){
 /////////
 
 
-function updateStatistics(){
-    totalDistance += kilometersPerSecond;
-    distanceDisplay.innerText = 'Kilometers Traveled: ' + totalDistance;
-    timer += 1;
-    timerDisplay.innerText = "0:00:" + timer;
-    if(totalDistance >= 1.14){
-        lateralSpeed = 0
-        horizontalSpeed = 0
-        backgroundSpeed = 0
-        kilometersPerSecond = 0 
-        obstacleSpeed = 0
-        clearInterval(statsInterval)
-        startBtn.innerText = "Restart Race"
 
 
-        
-    }
-}
+
 
 
 
@@ -275,6 +263,7 @@ function obstacleCollision(collision1, collision2){
     } 
     
 }
+
 function detectOutOfBounds(){
     if(raceCar1.x < 225 || raceCar1.x > 875){
         backgroundSpeed = .5
@@ -298,7 +287,7 @@ function gameLoop(){
     background.render();
     for(let i = 0; i < dirt.length; i ++){
         dirt[i].render();
-        if(obstacleCollision(raceCar1, dirt[i]) === true){
+        if(!gameOver && obstacleCollision(raceCar1, dirt[i]) === true){
             backgroundSpeed = 1
             setTimeout(function(){backgroundSpeed = 2.5}, 5000)
             obstacleSpeed = 1
@@ -311,7 +300,7 @@ function gameLoop(){
     }
     for (let i = 0; i < cone.length; i ++){
         cone[i].render();
-        if(obstacleCollision(raceCar1, cone[i]) === true){
+        if(!gameOver && obstacleCollision(raceCar1, cone[i]) === true){
             backgroundSpeed = 1.5
             setTimeout(function(){backgroundSpeed = 2.5}, 3000)
             obstacleSpeed = 1.5
@@ -333,28 +322,76 @@ function gameLoop(){
 document.addEventListener('keydown', movementHandler)
 
 
-let startBtn = document.querySelector('#startBtn');
 
 
-startBtn.addEventListener('click',() => { 
+
+
+
+
+
+function updateStatistics(){
+    totalDistance += kilometersPerSecond;
+    distanceDisplay.innerText = 'Kilometers Traveled: ' + totalDistance;
+    timer += 1;
+    timerDisplay.innerText = "0:00:" + timer;
+    if(totalDistance >= 7.14 && timer <= 68){
+        lateralSpeed = 0
+        horizontalSpeed = 0
+        backgroundSpeed = 0
+        kilometersPerSecond = 0 
+        obstacleSpeed = 0
+        clearInterval(statsInterval)
+        restartBtn.style.display = 'inline';
+        gameOver = true
+        winningModal.style.display = 'inline'
+    }
+}
+
+
+
+
+function initializeGame(){
+    gameOver = false
     speedDisplay.innerText = '380 KM/H' 
+    totalDistance = 0
+    timer = 0.00
+    backgroundSpeed = 2.5
+    kilometersPerSecond = .105
+    lateralSpeed = 25
+    horizontalSpeed = 20
+    obstacleSpeed = 2.5
+    gameLoopInterval = setInterval(gameLoop, 10)
+    statsInterval = setInterval(updateStatistics, 1000)  
+    modal.style.display = 'none';
+    startBtn.style.display = 'none';
+    
+    
+}
+
+
+function restartRace(){
+    gameOver = false
+    speedDisplay.innerText = '380 KM/H' 
+    totalDistance = 0
+    timer = 0.00
+    backgroundSpeed = 2.5
+    kilometersPerSecond = .105
+    lateralSpeed = 25
+    horizontalSpeed = 20
+    obstacleSpeed = 2.5
     statsInterval = setInterval(updateStatistics, 1000)  
     gameLoopInterval = setInterval(gameLoop, 10)
-    updateStatistics();
     modal.style.display = 'none';
-});
+    startBtn.style.display = 'none';
+    
+}
 
 
 
 
 
-
-
-
-
-
-
-
+startBtn.addEventListener('click', initializeGame)
+restartBtn.addEventListener('click', restartRace)
 
 
 

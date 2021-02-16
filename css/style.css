@@ -73,7 +73,7 @@ body {
     padding-top: 10px;
     font-size: 2em;
 }
-.button{
+#startBtn{
     background: #cd5b33;
     border-style: solid;
     border-color: white;
@@ -82,24 +82,46 @@ body {
     color: #fff;
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.4em;
+    margin-top: 5px;
 
 }
-.button:hover{
+#startBtn:hover{
     background: rgb(110, 146, 214);
-
 }
 
-.modal {
+#restartBtn {
+    background: rgb(110, 146, 214);
+    border-style: solid;
+    border-color: white;
+    padding: .5em .5em;
+    width: 250px;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.4em;
+    display: none;
+    margin-top: 5px;
+
+
+}
+#restartBtn:hover{
+    background: #cd5b33;
+}
+
+
+
+
+
+#initialModal {
     z-index: 1;
     position: fixed;
     display: inline;
     background-color: rgba(110,146,214,1);
     width: 1150px;
     height: 590px;
-    top: 40px;
+    top: 35px;
     text-align: center;
     border-width: 10px;
-    border-style: outset;
+    border-style: solid;
     border-color: #cd5b33;
 }
 .modal-header{
@@ -107,6 +129,26 @@ body {
     font-size: 2.5em;
     color: white;
 }
+.modal-body{
+    font-family: 'Bungee', cursive;
+}
 h3 {
-    font-size: 1.7em;
+    font-size: 2em;
+}
+p {
+    font-size: 1.5em;
+}
+#winningModal {
+    z-index: 1;
+    position: fixed;
+    display: none;
+    background-color: rgba(110,146,214,1);
+    width: 1150px;
+    height: 590px;
+    top: 35px;
+    text-align: center;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #cd5b33;
+
 }
