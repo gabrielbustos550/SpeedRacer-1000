@@ -21,9 +21,7 @@ let losingModal= document.querySelector('#losingModal');
 let startBtn = document.querySelector('#startBtn');
 let restartBtn = document.querySelector('#restartBtn');
 
-
-////////
-
+let obstacleStartingPosition = null
 
 
 
@@ -83,8 +81,9 @@ class Obstacle{
     render(){
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
         this.y += obstacleSpeed
+        obstacleStartingPosition = -2000
         if(this.y >= 600)
-        this.y = -2000
+        this.y = obstacleStartingPosition
     }
 }
 
@@ -331,15 +330,34 @@ document.addEventListener('keydown', movementHandler)
 
 
 
-
-
-
-
-
+function setObjectPositions(){
+    raceCar1.x = 550
+    raceCar1.y = 360
+    background.y = -4340
+    obstacleStartingPosition = -2000
+    dirt1.x = 475
+    dirt1.y = -950
+    dirt2.x = 300
+    dirt2.y = -650
+    dirt3.x = 625
+    dirt3.y = -650
+    dirt4.x = 225
+    dirt4.y = -1050
+    dirt5.x = 750
+    dirt5.y = -1700
+    dirt6.x = 550
+    dirt6.y = -1700
+    dirt7.x = 255
+    dirt7.y = -1550
+    dirt8.x = 725
+    dirt8.y = -2100
+    dirt9.x = 200
+    dirt9.y = -2250
+}
 
 function updateStatistics(){
     totalDistance += kilometersPerSecond;
-    distanceDisplay.innerText = 'Kilometers Traveled: ' + totalDistance;
+    distanceDisplay.innerText = 'Kilometers Traveled: ' + (Math.round(totalDistance * 100) / 100).toFixed(2);
     timer += 1;
     timerDisplay.innerText = "0:00:" + timer;
     if(totalDistance >= 7.14 && timer <= 68){
@@ -373,8 +391,6 @@ function updateStatistics(){
 }
 
 
-
-
 function initializeGame(){
     gameOver = false
     speedDisplay.innerText = '380 KM/H' 
@@ -393,6 +409,7 @@ function initializeGame(){
 
 
 function restartRace(){
+    setObjectPositions();
     gameOver = false
     speedDisplay.innerText = '380 KM/H' 
     totalDistance = 0
@@ -409,10 +426,6 @@ function restartRace(){
     winningModal.style.display = 'none'
     losingModal.style.display = 'none'
     restartBtn.style.display = 'none'
-    raceCar1.x = 550
-    raceCar1.y = 360
-    background.y = -4340
-    
 }
 
 
