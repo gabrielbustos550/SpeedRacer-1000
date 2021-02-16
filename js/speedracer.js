@@ -1,6 +1,6 @@
 let totalDistance = null
 let timer = null
-let gameOver = false
+let outOfBounds = false
 
 let distanceDisplay = document.querySelector('#distance');
 let timerDisplay = document.querySelector('#timer');
@@ -20,8 +20,6 @@ let winningModal = document.querySelector('#winningModal');
 let losingModal= document.querySelector('#losingModal');
 let startBtn = document.querySelector('#startBtn');
 let restartBtn = document.querySelector('#restartBtn');
-
-let obstacleStartingPosition = null
 
 
 
@@ -81,9 +79,8 @@ class Obstacle{
     render(){
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
         this.y += obstacleSpeed
-        obstacleStartingPosition = -2000
         if(this.y >= 600)
-        this.y = obstacleStartingPosition
+        this.y = -2000
     }
 }
 
@@ -272,29 +269,30 @@ function obstacleCollision(collision1, collision2){
 }
 
 function detectOutOfBounds(){
-    if(raceCar1.x < 225 || raceCar1.x > 875){
+    if(raceCar1.x < 200 || raceCar1.x > 900){
         backgroundSpeed = .5
-        setTimeout(function(){backgroundSpeed = 4}, 100)
+        setTimeout(function(){backgroundSpeed = 2.5}, 100)
         obstacleSpeed = .5
         setTimeout(function(){obstacleSpeed = 2.5}, 100)
         kilometersPerSecond = .021
         setTimeout(function(){kilometersPerSecond = .105}, 100)
         speedDisplay.innerText = '76 KM/H'
-        setTimeout(function(){speedDisplay.innerText = '380 KM/H'}, 100)
+        setTimeout(function(){speedDisplay.innerText = '380 KM/H'}, 10000)
+        outOfBounds = true
         
+    }else{
+        outOfBounds = false
     }
 }
 
 
-
-
-
 function gameLoop(){
     ctx.clearRect(0, 0, canvas.width, canvas.height)
+    detectOutOfBounds();
     background.render();
     for(let i = 0; i < dirt.length; i ++){
         dirt[i].render();
-        if(!gameOver && obstacleCollision(raceCar1, dirt[i]) === true){
+        if(!outOfBounds && obstacleCollision(raceCar1, dirt[i]) === true){
             backgroundSpeed = 1
             setTimeout(function(){backgroundSpeed = 2.5}, 5000)
             obstacleSpeed = 1
@@ -307,7 +305,7 @@ function gameLoop(){
     }
     for (let i = 0; i < cone.length; i ++){
         cone[i].render();
-        if(!gameOver && obstacleCollision(raceCar1, cone[i]) === true){
+        if(!outOfBounds && obstacleCollision(raceCar1, cone[i]) === true){
             backgroundSpeed = 1.5
             setTimeout(function(){backgroundSpeed = 2.5}, 3000)
             obstacleSpeed = 1.5
@@ -319,6 +317,7 @@ function gameLoop(){
         }
     }
     raceCar1.render();
+    
     
     
     
@@ -353,14 +352,96 @@ function setObjectPositions(){
     dirt8.y = -2100
     dirt9.x = 200
     dirt9.y = -2250
+    cone1.x = 475
+    cone1.y = -300
+    cone2.x = 500
+    cone2.y = -250
+    cone3.x = 575
+    cone3.y = -250
+    cone4.x = 600
+    cone4.y = -300
+    cone5.x = 450
+    cone5.y = -350
+    cone6.x = 625
+    cone6.y = -350
+    cone7.x = 225
+    cone7.y = -450
+    cone8.x = 875
+    cone8.y = -450
+    cone9.x = 300
+    cone9.y = -300
+    cone10.x = 800
+    cone10.y = -300
+    cone11.x = 875
+    cone11.y = -800
+    cone12.x = 675
+    cone12.y = -975
+    cone13.x = 725
+    cone13.y = -1025
+    cone14.x = 775
+    cone14.y = -1075
+    cone15.x = 450
+    cone15.y = -1275
+    cone16.x = 525
+    cone16.y = -1150
+    cone17.x = 225
+    cone17.y = -1375
+    cone18.x = 225
+    cone18.y = -1425
+    cone19.x = 275
+    cone19.y = -1400
+    cone20.x = 325
+    cone20.y = -1375
+    cone21.x = 275
+    cone21.y = -1350
+    cone22.x = 225
+    cone22.y = -1325
+    cone23.x = 825
+    cone23.y = -1525
+    cone24.x = 775
+    cone24.y = -1525
+    cone25.x = 725
+    cone25.y = -1525
+    cone26.x = 675
+    cone26.y = -1525
+    cone27.x = 775
+    cone27.y = -1425
+    cone28.x = 725
+    cone28.y = -1425
+    cone29.x = 550
+    cone29.y = -2050
+    cone30.x = 375
+    cone30.y = -1950
+    cone31.x = 425
+    cone31.y = -1950
+    cone32.x = 475
+    cone32.y = -1950
+    cone33.x = 600
+    cone33.y = -2100
+    cone34.x = 600
+    cone34.y = -2150
+    cone35.x = 550
+    cone35.y = -2200
+    cone36.x = 300
+    cone36.y = -2500
+    cone37.x = 400
+    cone37.y = -2500
+    cone38.x = 500
+    cone38.y = -2500
+    cone39.x = 600
+    cone39.y = -2500
+    cone40.x = 700
+    cone40.y = -2500
+    cone41.x = 800
+    cone41.y = -2500
 }
 
 function updateStatistics(){
     totalDistance += kilometersPerSecond;
     distanceDisplay.innerText = 'Kilometers Traveled: ' + (Math.round(totalDistance * 100) / 100).toFixed(2);
     timer += 1;
-    timerDisplay.innerText = "0:00:" + timer;
-    if(totalDistance >= 7.14 && timer <= 68){
+    timerDisplay.innerText = 'Seconds: ' + timer;
+    if(totalDistance >= 7.14 && timer <= 77){
         lateralSpeed = 0
         horizontalSpeed = 0
         backgroundSpeed = 0
@@ -370,10 +451,9 @@ function updateStatistics(){
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         clearInterval(gameLoopInterval)
         restartBtn.style.display = 'inline';
-        gameOver = true
         winningModal.style.display = 'inline'
     
-    }else if(totalDistance >= 7.14 && timer >68){
+    }else if(totalDistance >= 7.14 && timer >77){
         lateralSpeed = 0
         horizontalSpeed = 0
         backgroundSpeed = 0
@@ -383,7 +463,6 @@ function updateStatistics(){
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         clearInterval(gameLoopInterval)
         restartBtn.style.display = 'inline';
-        gameOver = true
         losingModal.style.display = 'inline'
         
 
@@ -392,7 +471,6 @@ function updateStatistics(){
 
 
 function initializeGame(){
-    gameOver = false
     speedDisplay.innerText = '380 KM/H' 
     totalDistance = 0
     timer = 0.00
@@ -410,7 +488,6 @@ function initializeGame(){
 
 function restartRace(){
     setObjectPositions();
-    gameOver = false
     speedDisplay.innerText = '380 KM/H' 
     totalDistance = 0
     timer = 0.00
