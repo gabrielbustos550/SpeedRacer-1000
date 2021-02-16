@@ -13,9 +13,6 @@ Game Rules:
 ### Start Screen
 ![screenshot start](Images/Screen1.JPG)
 
-### Select Car
-![screenshot Select Car](Images/Screen2.JPG)
-
 ### Game Play
 ![screenshot Game Play](Images/IMG_0192.JPG)
 
@@ -41,5 +38,17 @@ Control the race car using the left and right arrow. The left arrow will move th
 * Add speed boosters to the game. These would increase the vehicle speed for several seconds to improve finishing time.
 * Create another map that is more difficult to navigate through. 
 * Add a 2 player mode. This will allow to compete with one another on the same track by taking turns. Highest score advances.
+
+## Sources 
+
+* Traversy Media, "Create a Modal With HTML, CSS & JavaScript", Youtube, https://www.youtube.com/watch?v=6ophW7Ask_0
+* StackOverFLow, "Format Number to always show 2 decimal places", https://stackoverflow.com/questions/6134039/format-number-to-always-show-2-decimal-places
+* W3Schools, "HTML Canvas Reference", https://www.w3schools.com/tags/ref_canvas.asp
+* Wallpaper Access, "Checkered Flag Wallpapers", https://wallpaperaccess.com/checkered-flag
+
+
+
+
+
 
 
