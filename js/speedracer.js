@@ -17,6 +17,7 @@ let statsInterval = null
 
 let modal = document.getElementById('initialModal');
 let winningModal = document.querySelector('#winningModal');
+let losingModal= document.querySelector('#losingModal');
 let startBtn = document.querySelector('#startBtn');
 let restartBtn = document.querySelector('#restartBtn');
 
@@ -199,24 +200,31 @@ cone.push(cone41)
 
 ////////////
 
-let bg = new Image();
-bg.src = 'Images/Background.PNG';
+const bgImg = new Image();
+bgImg.src = 'Images/Background.PNG';
 
-function Background(y){
-    this.x = 0, this.y = y, this.w = bg.width, this.h = bg.height;
-    this.render = function (){
-        ctx.drawImage(bg, 0, this.y += backgroundSpeed);
+
+
+class Background{
+    constructor(x, y, width, height, img){
+        this.x = x
+        this.y = y
+        this.width = width
+        this.height = height
+        this.img = img
+    }
+    render(){
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height)
+        this.y += backgroundSpeed
         if(this.y >= 0){
             this.y = -4340
-            
-            
         }
-        
+
     }
-    
 }
 
-let background = new Background (-4340);
+
+let background = new Background (0, -4340, 1152, 4800, bgImg);
 ///////////
 
 
@@ -341,9 +349,26 @@ function updateStatistics(){
         kilometersPerSecond = 0 
         obstacleSpeed = 0
         clearInterval(statsInterval)
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        clearInterval(gameLoopInterval)
         restartBtn.style.display = 'inline';
         gameOver = true
         winningModal.style.display = 'inline'
+    
+    }else if(totalDistance >= 7.14 && timer >68){
+        lateralSpeed = 0
+        horizontalSpeed = 0
+        backgroundSpeed = 0
+        kilometersPerSecond = 0 
+        obstacleSpeed = 0
+        clearInterval(statsInterval)
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        clearInterval(gameLoopInterval)
+        restartBtn.style.display = 'inline';
+        gameOver = true
+        losingModal.style.display = 'inline'
+        
+
     }
 }
 
@@ -363,9 +388,7 @@ function initializeGame(){
     gameLoopInterval = setInterval(gameLoop, 10)
     statsInterval = setInterval(updateStatistics, 1000)  
     modal.style.display = 'none';
-    startBtn.style.display = 'none';
-    
-    
+    startBtn.style.display = 'none';   
 }
 
 
@@ -383,6 +406,12 @@ function restartRace(){
     gameLoopInterval = setInterval(gameLoop, 10)
     modal.style.display = 'none';
     startBtn.style.display = 'none';
+    winningModal.style.display = 'none'
+    losingModal.style.display = 'none'
+    restartBtn.style.display = 'none'
+    raceCar1.x = 550
+    raceCar1.y = 360
+    background.y = -4340
     
 }
 
